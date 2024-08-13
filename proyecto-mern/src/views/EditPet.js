@@ -3,9 +3,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
-import PetForm from '../components/FormularioMascota';
+import PetForm from '../components/PetForm';
 
-const EditarMascota = () => {
+const EditPet = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [pet, setPet] = useState(null);
@@ -47,4 +47,4 @@ const EditarMascota = () => {
   );
 };
 
-export default EditarMascota;
+export default EditPet;

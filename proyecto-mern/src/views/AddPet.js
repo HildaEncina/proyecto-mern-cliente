@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import FormularioMascota from '../components/FormularioMascota';
+import PetForm from '../components/PetForm';
 
-const AgregarMascota = () => {
+const AddPet = () => {
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
 
@@ -17,8 +17,8 @@ const AgregarMascota = () => {
     <div>
        <h1>Refugio para mascotas</h1>
        <h2>Agregar Mascota</h2>
-      <FormularioMascota onSubmitProp={createPet} errors={errors} /> {/* Pasar errores al componente PetForm */}
+      <PetForm onSubmitProp={createPet} errors={errors} /> {/* Pasar errores al componente PetForm */}
     </div>
   );
 };
-export default AgregarMascota;
+export default AddPet;

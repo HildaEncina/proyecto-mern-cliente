@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { useNavigate} from 'react-router-dom';
 
-const FormularioMascota = ({ initialName = '', initialType = '', initialRaza = '', initialSexo = '', initialEdad = '', initialOtrosDatos = '', initialEnAdopcion = {enAdopcion: false}, onSubmitProp, errors }) => {
+const PetForm = ({ initialName = '', initialType = '', initialRaza = '', initialSexo = '', initialEdad = '', initialOtrosDatos = '', initialEnAdopcion = {enAdopcion: false}, onSubmitProp, errors }) => {
   const [name, setName] = useState(initialName);
   const [type, setType] = useState(initialType);
   const [raza, setRaza] = useState(initialRaza);
@@ -70,4 +70,4 @@ const FormularioMascota = ({ initialName = '', initialType = '', initialRaza = '
     </form>
   );
 };
-export default FormularioMascota;
+export default PetForm;

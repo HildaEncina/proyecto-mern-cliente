@@ -1,8 +1,9 @@
+// components/PetList.js
 
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const ListaMascota = ({ pets }) => {
+const PetList = ({ pets }) => {
   return (
     <table className="pet-list-table">
       <thead>
@@ -35,4 +36,4 @@ const ListaMascota = ({ pets }) => {
   );
 };
 
-export default ListaMascota;
+export default PetList;

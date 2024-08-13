@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 
-const PerfilMascota = () => {
+const PetDetail = () => {
   const { id } = useParams();
   const [pet, setPet] = useState({});
   const navigate = useNavigate();
@@ -63,4 +63,4 @@ const PerfilMascota = () => {
   );
 };
 
-export default PerfilMascota;
+export default PetDetail;

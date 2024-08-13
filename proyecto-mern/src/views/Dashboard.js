@@ -2,10 +2,10 @@
 
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import ListaMascota from '../components/ListaMascota';
+import PetList from '../components/PetList';
 import { Link } from 'react-router-dom';
 
-const PerfilRescatista = () => {
+const Dashboard = () => {
   const [pets, setPets] = useState([]);
 
   useEffect(() => {
@@ -24,9 +24,9 @@ const PerfilRescatista = () => {
       <p>Ciudad:</p>
       <h2>Mis mascotas</h2>
       <Link to="/pets/new">Agregar una mascota al refugio</Link>
-      <ListaMascota pets={pets} />
+      <PetList pets={pets} />
     </div>
   );
 };
 
-export default PerfilRescatista;
+export default Dashboard;

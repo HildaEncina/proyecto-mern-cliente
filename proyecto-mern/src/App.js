@@ -1,22 +1,20 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-
-import 'bootstrap/dist/css/bootstrap.min.css';
+import Dashboard from './views/Dashboard';
+import AddPet from './views/AddPet';
+import EditPet from './views/EditPet';
+import PetDetail from './views/PetDetail';
 import './App.css';
-import PerfilRescatista from './views/PerfilRescatista';
-import EditarMascota from './views/EditarMascota';
-import AgregarMascota from './views/AgregarMascota';
-import PerfilMascota from './views/PerfilMascota';
 
 
 function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<PerfilRescatista />} />
-        <Route path="/pets/new" element={<AgregarMascota />} />
-        <Route path="/pets/:id/edit" element={<EditarMascota />} />
-        <Route path="/pets/:id" element={<PerfilMascota/>} />
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/pets/new" element={<AddPet />} />
+        <Route path="/pets/:id/edit" element={<EditPet />} />
+        <Route path="/pets/:id" element={<PetDetail />} />
       </Routes>
     </div>
   );

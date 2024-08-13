@@ -1,0 +1,38 @@
+
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+const ListaMascota = ({ pets }) => {
+  return (
+    <table className="pet-list-table">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Tipo</th>
+          <th>Raza</th>
+          <th>Sexo</th>
+          <th>Edad</th>
+          <th>Otros datos</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {pets.map((pet) => (
+          <tr key={pet._id}>
+            <td>{pet.name}</td>
+            <td>{pet.type}</td>
+            <td>{pet.raza}</td>
+            <td>{pet.sexo}</td>
+            <td>{pet.edad}</td>
+            <td>{pet.otrosDatos}</td>
+            <td>
+              <Link to={`/pets/${pet._id}`}>detalles</Link> | <Link to={`/pets/${pet._id}/edit`}>editar</Link>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+};
+
+export default ListaMascota;

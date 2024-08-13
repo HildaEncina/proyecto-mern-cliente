@@ -1,23 +1,23 @@
-import logo from './logo.svg';
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import PerfilRescatista from './views/PerfilRescatista';
+import EditarMascota from './views/EditarMascota';
+import AgregarMascota from './views/AgregarMascota';
+import PerfilMascota from './views/PerfilMascota';
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+        <Route path="/" element={<PerfilRescatista />} />
+        <Route path="/pets/new" element={<AgregarMascota />} />
+        <Route path="/pets/:id/edit" element={<EditarMascota />} />
+        <Route path="/pets/:id" element={<PerfilMascota/>} />
+      </Routes>
     </div>
   );
 }

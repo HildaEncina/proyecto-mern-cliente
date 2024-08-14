@@ -16,7 +16,7 @@ const AgregarMascota = () => {
   return (
     <div>
        <h1>Refugio para mascotas</h1>
-       <h2>Agregar Mascota</h2>
+       <h2>Registrar Mascota</h2>
       <FormularioMascota onSubmitProp={createPet} errors={errors} /> {/* Pasar errores al componente FormularioMascota */}
     </div>
   );

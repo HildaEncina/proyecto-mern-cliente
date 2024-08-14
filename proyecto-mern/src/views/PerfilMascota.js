@@ -7,9 +7,7 @@ const PerfilMascota = () => {
   const [pet, setPet] = useState({});
   const navigate = useNavigate();
   const [likes, setLikes] = useState(0);
-
   const [isLiked, setIsLiked] = useState(false);
-
 
   useEffect(() => {
     axios.get(`http://localhost:8000/api/pets/${id}`)
@@ -31,36 +29,45 @@ const PerfilMascota = () => {
       })
       .catch(err => console.error(err));
   };
+
   const goHome = () => {
     navigate('/');
   };
 
   return (
-    <div className="pet-detail-container">
-      <div className="grupo">
-        <h1>Refugio de Mascotas</h1>
-        <button className="back-button" onClick={goHome}>volver a inicio</button>
-      </div>
-      
+    <div>
+      <div className='atras'>
+        <button className="back-button" onClick={goHome}>Volver a inicio</button>
 
-      <div className="grupo">
-        <h2>Perfil de: {pet.nombre}</h2>
-        <button className="adopt-button" onClick={adoptPet}>Adoptar {pet.nombre}</button>
       </div>
-      
-      <div className="pet-detail">
-      
-        <p><strong>Tipo de mascota:</strong> {pet.tipo}</p>
-        <p><strong>Raza:</strong> {pet.raza}</p>
-        <p><strong>Edad:</strong> {pet.edad} años</p>
-        <p><strong>Sexo:</strong> {pet.sexo}</p>
-        <p><strong>Otros Datos:</strong> {pet.otrosDatos}</p>
-      </div>
-        <div className="grupo">
-          <button className="like-button" onClick={likePet} disabled={isLiked}>Like {pet.nombre}</button>
+
+      <div className="pet-detail-container">
+
+        <div className="pet-detail-header">
+          <h2>Perfil de {pet.nombre}</h2>
+        </div>
+
+        <div className="pet-info">
+          <div>
+            <p><strong>Tipo de mascota:</strong> {pet.tipo}</p>
+            <p><strong>Raza:</strong> {pet.raza}</p>
+            <p><strong>Edad:</strong> {pet.edad} años</p>
+            <p><strong>Sexo:</strong> {pet.sexo}</p>
+          </div>
+          <div>
+            <p><strong>Otros Datos:</strong> {pet.otrosDatos}</p>
+            <p><strong>En adopción:</strong> {pet.enAdopcion ? 'Sí' : 'No'}</p>
+          </div>
+        </div>
+
+        <div className="pet-actions">
+          <button className="btn-adopt" onClick={adoptPet}>Adoptar {pet.nombre}</button>
+          <button className="btn-like" onClick={likePet} disabled={isLiked}>Like {pet.nombre}</button>
           <p>{likes} like(s)</p>
         </div>
-          </div>
+      </div>
+    </div>
+
   );
 };
 

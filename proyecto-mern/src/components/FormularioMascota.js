@@ -3,17 +3,19 @@
 import React, { useState } from 'react';
 import { useNavigate} from 'react-router-dom';
 
-const FormularioMascota = ({ initialNombre = '', initialTipo = '', initialRaza = '', initialSexo = '', initialEdad = '', initialOtrosDatos = '', initialEnAdopcion = {enAdopcion: false}, onSubmitProp, errors }) => {
+const FormularioMascota = ({ initialNombre = '', initialTipo = '', initialRaza = '', initialSexo = '', initialEdad = '', initialOtrosDatos = '', initialEnAdopcion =  false, onSubmitProp, errors }) => {
   const [nombre, setNombre] = useState(initialNombre);
   const [tipo, setTipo] = useState(initialTipo);
   const [raza, setRaza] = useState(initialRaza);
   const [sexo, setSexo] = useState(initialSexo);
   const [edad, setEdad] = useState(initialEdad);
   const [otrosDatos, setOtrosDatos] = useState(initialOtrosDatos);
-    const [enAdopcion, setEnAdopcion] = useState(initialEnAdopcion.enAdopcion || false);
+  const [enAdopcion, setEnAdopcion] = useState(initialEnAdopcion);
+    
     const navigate = useNavigate();
   const addmascota = e => {
     e.preventDefault();
+  
     onSubmitProp({ nombre, tipo, raza, sexo,edad, otrosDatos, enAdopcion });
    
   };
@@ -24,14 +26,15 @@ const FormularioMascota = ({ initialNombre = '', initialTipo = '', initialRaza =
 
 
   return (
+ 
     <form onSubmit={addmascota}>
       <div className="form-group">
-        <label>Nombre de la Mascota:</label><br />
+        <label>Nombre :</label><br />
         <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} />
         {errors.nombre && <span className="error">{errors.nombre.message}</span>} {/* Mostrar mensaje de error */}
       </div>
       <div className="form-group">
-        <label>Tipo de Mascota:</label><br />
+        <label>Tipo (gato/perro):</label><br />
         <input type="text" value={tipo} onChange={(e) => setTipo(e.target.value)} />
         {errors.tipo && <span className="error">{errors.tipo.message}</span>} {/* Mostrar mensaje de error */}
       </div>
@@ -60,12 +63,11 @@ const FormularioMascota = ({ initialNombre = '', initialTipo = '', initialRaza =
         <label>Poner en Adopción:</label>
         <input
           type="checkbox"
-         checked={enAdopcion}
-           onChange={(e) => setEnAdopcion(e.target.checked)}
+          checked={enAdopcion}
+          onChange={(e) => setEnAdopcion(e.target.checked)}
         />
       </div>
       <button className="btn-save" onClick={addmascota}>Guardar</button>
-      <button type="button" className="btn-home" onClick={goHome}>Ir al inicio</button>
       
     </form>
   );

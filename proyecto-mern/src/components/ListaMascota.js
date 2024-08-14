@@ -14,6 +14,7 @@ const ListaMascota = ({ pets }) => {
           <th>Sexo</th>
           <th>Edad</th>
           <th>Otros datos</th>
+          <th>En adopción</th>
           <th>Acciones</th>
         </tr>
       </thead>
@@ -26,8 +27,9 @@ const ListaMascota = ({ pets }) => {
             <td>{pet.sexo}</td>
             <td>{pet.edad}</td>
             <td>{pet.otrosDatos}</td>
+            <td>{pet.enAdopcion ? 'sí' : 'no'}</td> 
             <td>
-              <Link to={`/pets/${pet._id}`}>detalles</Link> | <Link to={`/pets/${pet._id}/edit`}>editar</Link>
+              <Link to={`/pets/${pet._id}`}>Ver mascota</Link> | <Link to={`/pets/${pet._id}/edit`}>editar</Link>
             </td>
           </tr>
         ))}

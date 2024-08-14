@@ -17,13 +17,17 @@ const PerfilRescatista = () => {
   return (
     <div className="perfilRescatista-container">
       <h1>Rescatista de mascotas</h1>
-      <h2>Mi informacion</h2>
-      <p>Nombre:</p>
-      <p>Apellido:</p>
-      <p>Telefono:</p>
-      <p>Ciudad:</p>
+      <div className='contenedor-rescatista'> 
+        <h2>Mi informacion</h2>
+        <p>Nombre:</p>
+        <p>Apellido:</p>
+        <p>Telefono:</p>
+        <p>Ciudad:</p>
+      </div>  
       <h2>Mis mascotas</h2>
-      <Link to="/pets/new">Agregar una mascota al refugio</Link>
+      <div className="button-container">
+        <Link className="btn-nuevo"  to="/pets/new">Agregar una mascota</Link>
+      </div>
       <ListaMascota pets={pets} />
     </div>
   );

@@ -27,22 +27,29 @@ const EditarMascota = () => {
   if (!pet) {
     return <div>Loading...</div>;
   }
-
+  const goHome = () => {
+    navigate('/');
+  };
   return (
-    <div className="edit-pet-container">
+    <div>
+      <div className='atras'>
+        <button className="back-button" onClick={goHome}>Volver a inicio</button>
+      </div>
       <h1>Refugio de Mascotas</h1>
-      <h2>Editar {pet.nombre}</h2>
-      <FormularioMascota 
-        initialNombre={pet.nombre}
-        initialType={pet.tipo}
-        initialRaza={pet.raza}
-        initialSexo={pet.sexo}
-        initialEdad={pet.edad}
-        initialOtrosDatos={pet.otrosDatos}	
-        initialEnAdopcion={pet.enAdopcion}
-        onSubmitProp={updatePet} 
-        errors={errors}
-      />
+      <div className="edit-pet-container">
+        <h2>Editar perfil de  {pet.nombre}</h2>
+        <FormularioMascota
+          initialNombre={pet.nombre}
+          initialTipo={pet.tipo}
+          initialRaza={pet.raza}
+          initialSexo={pet.sexo}
+          initialEdad={pet.edad}
+          initialOtrosDatos={pet.otrosDatos}
+          initialEnAdopcion={pet.enAdopcion}
+          onSubmitProp={updatePet}
+          errors={errors}
+        />
+      </div>
     </div>
   );
 };

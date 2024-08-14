@@ -1,11 +1,11 @@
-// views/Dashboard.js
+// views/PerfilRescatista.js
 
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import PetList from '../components/PetList';
+import ListaMascota from '../components/ListaMascota';
 import { Link } from 'react-router-dom';
 
-const Dashboard = () => {
+const PerfilRescatista = () => {
   const [pets, setPets] = useState([]);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <div className="dashboard-container">
+    <div className="perfilRescatista-container">
       <h1>Rescatista de mascotas</h1>
       <h2>Mi informacion</h2>
       <p>Nombre:</p>
@@ -24,9 +24,9 @@ const Dashboard = () => {
       <p>Ciudad:</p>
       <h2>Mis mascotas</h2>
       <Link to="/pets/new">Agregar una mascota al refugio</Link>
-      <PetList pets={pets} />
+      <ListaMascota pets={pets} />
     </div>
   );
 };
 
-export default Dashboard;
+export default PerfilRescatista;

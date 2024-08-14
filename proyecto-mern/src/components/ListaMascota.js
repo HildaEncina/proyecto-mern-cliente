@@ -1,9 +1,9 @@
-// components/PetList.js
+// components/ListaMascota.js
 
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const PetList = ({ pets }) => {
+const ListaMascota = ({ pets }) => {
   return (
     <table className="pet-list-table">
       <thead>
@@ -20,8 +20,8 @@ const PetList = ({ pets }) => {
       <tbody>
         {pets.map((pet) => (
           <tr key={pet._id}>
-            <td>{pet.name}</td>
-            <td>{pet.type}</td>
+            <td>{pet.nombre}</td>
+            <td>{pet.tipo}</td>
             <td>{pet.raza}</td>
             <td>{pet.sexo}</td>
             <td>{pet.edad}</td>
@@ -36,4 +36,4 @@ const PetList = ({ pets }) => {
   );
 };
 
-export default PetList;
+export default ListaMascota;

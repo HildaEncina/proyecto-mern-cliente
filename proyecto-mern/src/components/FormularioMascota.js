@@ -1,11 +1,11 @@
-// components/PetForm.js
+// components/FormularioMascota.js
 
 import React, { useState } from 'react';
 import { useNavigate} from 'react-router-dom';
 
-const PetForm = ({ initialName = '', initialType = '', initialRaza = '', initialSexo = '', initialEdad = '', initialOtrosDatos = '', initialEnAdopcion = {enAdopcion: false}, onSubmitProp, errors }) => {
-  const [name, setName] = useState(initialName);
-  const [type, setType] = useState(initialType);
+const FormularioMascota = ({ initialNombre = '', initialTipo = '', initialRaza = '', initialSexo = '', initialEdad = '', initialOtrosDatos = '', initialEnAdopcion = {enAdopcion: false}, onSubmitProp, errors }) => {
+  const [nombre, setNombre] = useState(initialNombre);
+  const [tipo, setTipo] = useState(initialTipo);
   const [raza, setRaza] = useState(initialRaza);
   const [sexo, setSexo] = useState(initialSexo);
   const [edad, setEdad] = useState(initialEdad);
@@ -14,7 +14,7 @@ const PetForm = ({ initialName = '', initialType = '', initialRaza = '', initial
     const navigate = useNavigate();
   const addmascota = e => {
     e.preventDefault();
-    onSubmitProp({ name, type, raza, sexo,edad, otrosDatos, enAdopcion });
+    onSubmitProp({ nombre, tipo, raza, sexo,edad, otrosDatos, enAdopcion });
    
   };
 
@@ -27,13 +27,13 @@ const PetForm = ({ initialName = '', initialType = '', initialRaza = '', initial
     <form onSubmit={addmascota}>
       <div className="form-group">
         <label>Nombre de la Mascota:</label><br />
-        <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
-        {errors.name && <span className="error">{errors.name.message}</span>} {/* Mostrar mensaje de error */}
+        <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} />
+        {errors.nombre && <span className="error">{errors.nombre.message}</span>} {/* Mostrar mensaje de error */}
       </div>
       <div className="form-group">
         <label>Tipo de Mascota:</label><br />
-        <input type="text" value={type} onChange={(e) => setType(e.target.value)} />
-        {errors.type && <span className="error">{errors.type.message}</span>} {/* Mostrar mensaje de error */}
+        <input type="text" value={tipo} onChange={(e) => setTipo(e.target.value)} />
+        {errors.tipo && <span className="error">{errors.tipo.message}</span>} {/* Mostrar mensaje de error */}
       </div>
       <div className="form-group">
         <label>Raza:</label><br />
@@ -70,4 +70,4 @@ const PetForm = ({ initialName = '', initialType = '', initialRaza = '', initial
     </form>
   );
 };
-export default PetForm;
+export default FormularioMascota;

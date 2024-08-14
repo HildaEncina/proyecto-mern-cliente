@@ -1,11 +1,11 @@
-// views/EditPet.js
+// views/EditarMascota.js
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
-import PetForm from '../components/PetForm';
+import FormularioMascota from '../components/FormularioMascota';
 
-const EditPet = () => {
+const EditarMascota = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [pet, setPet] = useState(null);
@@ -31,10 +31,10 @@ const EditPet = () => {
   return (
     <div className="edit-pet-container">
       <h1>Refugio de Mascotas</h1>
-      <h2>Editar {pet.name}</h2>
-      <PetForm 
-        initialName={pet.name}
-        initialType={pet.type}
+      <h2>Editar {pet.nombre}</h2>
+      <FormularioMascota 
+        initialNombre={pet.nombre}
+        initialType={pet.tipo}
         initialRaza={pet.raza}
         initialSexo={pet.sexo}
         initialEdad={pet.edad}
@@ -47,4 +47,4 @@ const EditPet = () => {
   );
 };
 
-export default EditPet;
+export default EditarMascota;

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Dashboard from './views/Dashboard';
-import AddPet from './views/AddPet';
-import EditPet from './views/EditPet';
-import PetDetail from './views/PetDetail';
+import PerfilRescatista from './views/PerfilRescatista';
+import AgregarMascota from './views/AgregarMascota';
+import EditarMascota from './views/EditarMascota';
+import PerfilMascota from './views/PerfilMascota';
 import './App.css';
 
 
@@ -11,10 +11,10 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/pets/new" element={<AddPet />} />
-        <Route path="/pets/:id/edit" element={<EditPet />} />
-        <Route path="/pets/:id" element={<PetDetail />} />
+        <Route path="/" element={<PerfilRescatista />} />
+        <Route path="/pets/new" element={<AgregarMascota />} />
+        <Route path="/pets/:id/edit" element={<EditarMascota />} />
+        <Route path="/pets/:id" element={<PerfilMascota />} />
       </Routes>
     </div>
   );

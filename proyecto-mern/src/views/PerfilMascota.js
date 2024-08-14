@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 
-const PetDetail = () => {
+const PerfilMascota = () => {
   const { id } = useParams();
   const [pet, setPet] = useState({});
   const navigate = useNavigate();
@@ -44,23 +44,24 @@ const PetDetail = () => {
       
 
       <div className="grupo">
-        <h2>Detalles sobre: {pet.name}</h2>
-        <button className="adopt-button" onClick={adoptPet}>Adoptar {pet.name}</button>
+        <h2>Perfil de: {pet.nombre}</h2>
+        <button className="adopt-button" onClick={adoptPet}>Adoptar {pet.nombre}</button>
       </div>
       
       <div className="pet-detail">
-        <p><strong>Tipo de mascota:</strong> {pet.type}</p>
+      
+        <p><strong>Tipo de mascota:</strong> {pet.tipo}</p>
         <p><strong>Raza:</strong> {pet.raza}</p>
         <p><strong>Edad:</strong> {pet.edad} años</p>
         <p><strong>Sexo:</strong> {pet.sexo}</p>
         <p><strong>Otros Datos:</strong> {pet.otrosDatos}</p>
       </div>
         <div className="grupo">
-          <button className="like-button" onClick={likePet} disabled={isLiked}>Like {pet.name}</button>
+          <button className="like-button" onClick={likePet} disabled={isLiked}>Like {pet.nombre}</button>
           <p>{likes} like(s)</p>
         </div>
           </div>
   );
 };
 
-export default PetDetail;
+export default PerfilMascota;

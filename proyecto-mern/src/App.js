@@ -6,6 +6,7 @@ import EditarMascota from './views/EditarMascota';
 import PerfilMascota from './views/PerfilMascota';
 import HomeAdoptante from './views/HomeAdoptante';
 import './App.css';
+import HomeRescatista from './views/HomeRescatista';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/pets/:id/edit" element={<EditarMascota />} />
           <Route path="/pets/:id" element={<PerfilMascota />} />
           <Route path="/HomeAdoptante" element={<HomeAdoptante />} />
+          <Route path="/HomeRescatista" element={<HomeRescatista />} />
         </Routes>
       </div>
     </Router>

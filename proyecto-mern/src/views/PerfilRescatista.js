@@ -14,6 +14,7 @@ const PerfilRescatista = () => {
       .catch(err => console.error(err));
   }, []);
 
+
   return (
     <div className="perfilRescatista-container">
       <h1>Rescatista de mascotas</h1>

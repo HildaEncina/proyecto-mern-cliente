@@ -263,6 +263,7 @@ tr:hover {
   background-color: #333;
 }
 
+
 .btn-login{
   background-color: #2B2D42;
   color:#ffff;
@@ -403,3 +404,39 @@ tr:hover {
   color: red;
   font-size: 14px;
 }
+/* HomePage.css */
+
+.home-page {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.pet-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.pet-card {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  width: calc(33% - 40px); /* Ajusta el ancho de las tarjetas */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer; 
+}
+
+.pet-card:hover {
+  transform: scale(1.03);
+}
+
+.pet-card h2 {
+  margin-top: 0;
+}
+
+.pet-card p {
+  margin: 5px 0;
+}
+

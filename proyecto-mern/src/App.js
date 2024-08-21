@@ -28,14 +28,14 @@ function App() {
         <Route path="/pets/:id/edit" element={<EditarMascota />} />
         <Route path="/pets/:id" element={<PerfilMascota />} />
         <Route path="/registro" element={<FormularioRegistro />}></Route>
-          <Route path="/PerfilRescatista" element={<PerfilRescatista />} />
-          <Route path="/pets/new" element={<AgregarMascota />} />
-          <Route path="/pets/:id/edit" element={<EditarMascota />} />
-          <Route path="/pets/:id" element={<PerfilMascota />} />
-          <Route path="/HomeAdoptante" element={<HomeAdoptante />} />
-          <Route path="/HomeRescatista" element={<HomeRescatista />} />
-        </Routes>
-      </div>
+        <Route path="/PerfilRescatista" element={<PerfilRescatista />} />
+        <Route path="/pets/new" element={<AgregarMascota />} />
+        <Route path="/pets/:id/edit" element={<EditarMascota />} />
+        <Route path="/pets/:id" element={<PerfilMascota />} />
+        <Route path="/HomeAdoptante" element={<HomeAdoptante />} />
+        <Route path="/HomeRescatista" element={<HomeRescatista />} />
+      </Routes>
+    </div>
   
   )
 }

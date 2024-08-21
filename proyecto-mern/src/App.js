@@ -15,19 +15,31 @@ import HomeAdoptante from './views/HomeAdoptante';
 import './App.css';
 import HomeRescatista from './views/HomeRescatista';
 
-function App() {
+
+const App = () => {
+  
+  const [listaUsuarios, setListaUsuario] = useState([]);
   const [loginValido, setLoginValido] = useState(false);
+
+
+  const actualizarListaUsuarios = (nuevoUsuario) => {
+    setListaUsuario([...listaUsuarios, nuevoUsuario]);
+  }
 
   return (
 
     <div className="App">
       <Routes>
-        <Route path="/login" element={<FormularioLogin />}></Route>
+        {/* Rutas Usuarios */}
+        <Route path="/login" element={<FormularioLogin />}/>
+        <Route path="/registro" element={<FormularioRegistro
+               actualizarListaUsuarios={actualizarListaUsuarios} />}/>
+
         <Route path="/" element={<PerfilRescatista />} />
         <Route path="/pets/new" element={<AgregarMascota />} />
         <Route path="/pets/:id/edit" element={<EditarMascota />} />
         <Route path="/pets/:id" element={<PerfilMascota />} />
-        <Route path="/registro" element={<FormularioRegistro />}></Route>
+       
         <Route path="/PerfilRescatista" element={<PerfilRescatista />} />
         <Route path="/pets/new" element={<AgregarMascota />} />
         <Route path="/pets/:id/edit" element={<EditarMascota />} />

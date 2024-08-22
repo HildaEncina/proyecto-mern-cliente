@@ -30,6 +30,7 @@ const App = () => {
 
     <div className="App">
       <Routes>
+      
         {/* Rutas Usuarios */}
         <Route path="/login" element={<FormularioLogin />}/>
         <Route path="/registro" element={<FormularioRegistro

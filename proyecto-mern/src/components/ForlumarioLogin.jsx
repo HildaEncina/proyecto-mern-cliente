@@ -1,31 +1,65 @@
 import {useState} from "react"; 
 import logo from "../assents/logo.jpg"
 import axios from "axios";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { jwtDecode } from 'jwt-decode';
+
 const FormularioLogin = (props) => {
      
     const [correo, setCorreo] = useState(""); 
     const [contrasena, setContrasena] = useState(""); 
     const [err, setError]= useState(""); 
+    const navigate = useNavigate();
     
     const procesaLogin = async (event) => {
         event.preventDefault(); 
+       
         const URL = "http://localhost:8000/usuario/login";  
         const config = {
             correo, contrasena
-        }
-        try{
+        };
+        try {
             const respuesta = await axios.post(URL, config);
-            localStorage.setItem("token", respuesta.data.token);
-            setError(err.response.data.mensaje);
-            setCorreo(""); 
-            setContrasena(""); 
-        }
-        catch (err){
-            setError(err.response.data.mensaje);
+           
+        
+            if (respuesta && respuesta.data) {
+              const { token } = respuesta.data;
+              if (token) {
+                localStorage.setItem("token", token);
+                console.log("Token guardado:", localStorage.getItem("token"));
+        
+                
+                const decodedToken = jwtDecode(token);
+                
+        
+                const rol = decodedToken.rol; 
+                if (rol === 'Rescatista') {
+                  navigate('/HomeRescatista');
+                } else if (rol === 'Adoptante') {
+                  navigate('/HomeAdoptante');
+                } else {
+                  setError("Rol de usuario desconocido.");
+                }
+        
+                setError(""); 
+                setCorreo(""); 
+                setContrasena(""); 
+              } else {
+                setError("La respuesta del servidor no contiene un token.");
+              }
+            } else {
+              setError("La respuesta del servidor es inválida.");
+            }
+          } catch (err) {
+            console.error("Error en el login:", err);
+            if (err.response && err.response.data && err.response.data.mensaje) {
+              setError(err.response.data.mensaje);
+            } else {
+              setError("Error al realizar el login. Por favor, inténtelo de nuevo.");
+            }
+          }
         }
        
-    } 
 
     return (
         <>  
@@ -53,13 +87,13 @@ const FormularioLogin = (props) => {
                     </div>
             
                     <div>
-                            <label htmlFor="contraseña"></label>
+                            <label htmlFor="contrasena"></label>
                             <input className="form-login"
                                 type="password"
                                 name="contrasena"
                                 value={contrasena}
                                 onChange={(e) => setContrasena(e.target.value)} 
-                                placeholder="Contraseña"
+                                placeholder="Contrasena"
                             />
                     </div>
             

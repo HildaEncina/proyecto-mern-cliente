@@ -1,0 +1,12 @@
+.detalle-solicitud {
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+  .detalle-solicitud h1 {
+    font-size: 24px;
+}
+
+  .detalle-solicitud p {
+    font-size: 16px;
+}

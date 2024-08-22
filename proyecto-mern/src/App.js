@@ -15,6 +15,8 @@ import HomeAdoptante from './views/HomeAdoptante';
 import './App.css';
 import HomeRescatista from './views/HomeRescatista';
 
+import DetalleSolicitud from './components/DetalleSolicitud.js';
+
 function App() {
   const [loginValido, setLoginValido] = useState(false);
 
@@ -34,6 +36,7 @@ function App() {
         <Route path="/pets/:id" element={<PerfilMascota />} />
         <Route path="/HomeAdoptante" element={<HomeAdoptante />} />
         <Route path="/HomeRescatista" element={<HomeRescatista />} />
+        <Route path="HomeRescatista/:id" element={<DetalleSolicitud />}/>
       </Routes>
     </div>
   

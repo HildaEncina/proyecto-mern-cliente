@@ -13,6 +13,7 @@ const ListaMascota = ({ pets }) => {
           <th>Raza</th>
           <th>Sexo</th>
           <th>Edad</th>
+          <th>imagen</th>
           <th>Otros datos</th>
           <th>En adopción</th>
           <th>Acciones</th>
@@ -26,6 +27,7 @@ const ListaMascota = ({ pets }) => {
             <td>{pet.raza}</td>
             <td>{pet.sexo}</td>
             <td>{pet.edad}</td>
+            <td>{pet.selectedfile}</td>
             <td>{pet.otrosDatos}</td>
             <td>{pet.enAdopcion ? 'sí' : 'no'}</td> 
             <td>

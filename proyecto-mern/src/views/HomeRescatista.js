@@ -26,6 +26,8 @@ ChartJS.register(
 const HomeRescatista = () => {
   const [summary, setSummary] = useState({});
   const [pets, setPets] = useState([]);
+  const [solicitudes, setSolicitudes] = useState([]);
+  const [notificaciones, setNotificaciones] = useState([0])
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -45,9 +47,17 @@ const HomeRescatista = () => {
         setPets(mascotas);
       })
       .catch(err => console.error(err));
-  }, []);
 
-  const data = {
+      axios.get('/api/solicitudes')
+      .then(res => {
+        const solicitudesRecibidas = res.data;
+        setSolicitudes(solicitudesRecibidas);
+        setNotificaciones(solicitudesRecibidas.length);
+      })
+      .catch(err => console.error(err));
+  }, []);
+  
+const data = {
     labels: ['Total', 'Disponibles', 'Adoptadas'],
     datasets: [
       {
@@ -81,6 +91,12 @@ const HomeRescatista = () => {
     navigate('/PerfilRescatista');
   };
 
+  const verSolicitudes = () => {
+    navigate('/solicitud');
+  };
+  const verDetalleSolicitud = (id) => {
+    navigate(`/solicitudes/${id}`);  // Navegar a la página de detalle de la solicitud con el ID
+  };
   return (
     <div>
       <h1>Bienvenido, Rescatista</h1>
@@ -112,7 +128,18 @@ const HomeRescatista = () => {
           </div>
 
           <div className="solicitudes">
-            <h2>Solicitudes</h2>
+          <button onClick={verSolicitudes}>
+              Solicitudes {notificaciones > 0 && <span className="notification-badge">{notificaciones}</span>}
+            </button>
+
+            <div className="solicitudes">
+            {solicitudes.map(solicitud => (
+              <div key={solicitud.id} className="solicitud-item">
+                <p>{solicitud.nombre}</p>
+                <button onClick={() => verDetalleSolicitud(solicitud.id)}>Ver Detalle</button>
+              </div>
+            ))}
+          </div>
           </div>
         </div>
       </div>

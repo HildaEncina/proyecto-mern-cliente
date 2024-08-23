@@ -1,5 +1,4 @@
-
-import {React, useState} from 'react';
+import { React, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import PerfilRescatista from './views/PerfilRescatista';
@@ -15,19 +14,18 @@ import HomeAdoptante from './views/HomeAdoptante';
 import './App.css';
 import HomeRescatista from './views/HomeRescatista';
 
+import DetalleSolicitud from './components/DetalleSolicitud.js';
 
 const App = () => {
-  
+
   const [listaUsuarios, setListaUsuario] = useState([]);
   const [loginValido, setLoginValido] = useState(false);
-
 
   const actualizarListaUsuarios = (nuevoUsuario) => {
     setListaUsuario([...listaUsuarios, nuevoUsuario]);
   }
 
   return (
-
     <div className="App">
       <Routes>
       
@@ -42,15 +40,12 @@ const App = () => {
         <Route path="/pets/:id" element={<PerfilMascota />} />
        
         <Route path="/PerfilRescatista" element={<PerfilRescatista />} />
-        <Route path="/pets/new" element={<AgregarMascota />} />
-        <Route path="/pets/:id/edit" element={<EditarMascota />} />
-        <Route path="/pets/:id" element={<PerfilMascota />} />
         <Route path="/HomeAdoptante" element={<HomeAdoptante />} />
         <Route path="/HomeRescatista" element={<HomeRescatista />} />
+        <Route path="HomeRescatista/:id" element={<DetalleSolicitud />}/>
       </Routes>
     </div>
-  
-  )
+  );
 }
 
 export default App;

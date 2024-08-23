@@ -8,13 +8,13 @@ const PerfilMascota = () => {
   const navigate = useNavigate();
   const [likes, setLikes] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
-
+  const [selectedFile, setSelectedFile] = useState("");
+  const [imagePreviewUrl, setImagePreviewUrl] = useState()
   useEffect(() => {
     axios.get(`http://localhost:8000/api/pets/${id}`)
       .then(res => setPet(res.data))
       .catch(err => console.error(err));
   }, [id]);
-
   const adoptPet = () => {
     axios.delete(`http://localhost:8000/api/pets/${id}`)
       .then(() => navigate('/'))
@@ -40,13 +40,18 @@ const PerfilMascota = () => {
         <button className="back-button" onClick={goHome}>Volver a inicio</button>
 
       </div>
-
       <div className="pet-detail-container">
-
         <div className="pet-detail-header">
           <h2>Perfil de {pet.nombre}</h2>
         </div>
-
+        <div className="pet-image"> {/* Mostrar la imagen cargada o la imagen por defecto */}
+          <img
+            src={imagePreviewUrl || pet.selectedFile}
+            alt={`Imagen de ${pet.nombre}`}
+            style={{ width: '30%', maxWidth: '30%', height: 'auto', borderRadius: '8px' }}
+            
+          />
+        </div>
         <div className="pet-info">
           <div>
             <p><strong>Tipo de mascota:</strong> {pet.tipo}</p>

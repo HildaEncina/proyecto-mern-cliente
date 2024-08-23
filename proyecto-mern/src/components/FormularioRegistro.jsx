@@ -17,13 +17,14 @@ const FormularioRegistro = (props) => {
     const [estiloDeVida, setEstiloDeVida] = useState(""); 
     const [mascotas, setMascotas] = useState("");
     const [error, setError] = useState(""); 
+    const [mensaje, setMensaje] = useState("");
  
-    const [opcionSeleccionada, setOpcionSeleccionada] = useState('');
     
     const navegacion = useNavigate(); 
      
     const manejarCambio = (e) => {
-        setOpcionSeleccionada(e.target.value);
+        setRol(e.target.value);
+        
     };
 
     const enviarFormularioRegistro = async (e) => {
@@ -32,9 +33,13 @@ const FormularioRegistro = (props) => {
             const nuevoUsuario = {
                 nombre, apellido, edad, correo, contrasena, telefono, ciudad, rol, estiloDeVida
             }
-            const URL = "http://localhost:8080/usuario/nuevo";
+            console.log("Enviando usuario:", nuevoUsuario);
+            const URL = "http://localhost:8000/usuario/nuevo";
             const respuesta = await axios.post(URL, nuevoUsuario); 
             props.actualizarListaUsuarios(respuesta.data); 
+        
+
+           
             setNombre(""); 
             setApellido("");
             setEdad("");
@@ -44,10 +49,21 @@ const FormularioRegistro = (props) => {
             setCiudad(""); 
             setRol(""); 
             setEstiloDeVida(""); 
-            navegacion("/login"); 
-        }
-        catch(error) {
-            setError(error.response.statusText);
+
+            setMensaje("¡Bienvenido! Tu registro ha sido exitoso.");
+
+            setTimeout(() => {
+                navegacion("/login"); 
+            }, 4000);
+
+
+        } catch (error) {
+            if (error.response) {
+                console.log(error.response.data);
+                setError(error.response.statusText || "Error desconocido");
+            } else {
+                setError("Error al enviar el formulario. Por favor intenta nuevamente.");
+            }
         }
 
 
@@ -150,12 +166,12 @@ const FormularioRegistro = (props) => {
                                         <select
                                             id="opciones"
                                             className="input-rol"
-                                            value={opcionSeleccionada}
-                                            onChange={(e) => setRol(manejarCambio)}
+                                            value={rol}
+                                            onChange={manejarCambio}
                                         >
                                             <option value="">Seleccione un Rol</option>
-                                            <option value="opcion1">Adoptante</option>
-                                            <option value="opcion2">Rescatista</option>
+                                            <option value="Adoptante">Adoptante</option>
+                                            <option value="Rescatista">Rescatista</option>
                                         </select>
                                     </div>
                                     <div className="form-group-registro">
@@ -172,6 +188,7 @@ const FormularioRegistro = (props) => {
                                     </div>
                                     <button className="btn-registrarse">Registrarse</button>
                                     <div className="error-mensaje">{error}</div>
+                                    <div className="mensaje-exito">{mensaje}</div> 
                                 </form>
                             </div>
             </div>
